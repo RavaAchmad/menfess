@@ -6,11 +6,17 @@ RUN apt-get update && \
   imagemagick \
   webp && \
   apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
+  rm -rf /var/lib/apt/lists/
+  
 
+
+CMD ["pm2-runtime", "app.js"]
 COPY package.json .
 
 RUN npm install && npm install pm2 -g 
+
+ENV PM2_PUBLIC_KEY pye0hu67proivzg
+ENV PM2_SECRET_KEY p108bar5fnx5rmp
 
 COPY . .
 
