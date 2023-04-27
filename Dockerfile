@@ -9,8 +9,6 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/
   
 
-
-CMD ["pm2-runtime", "app.js"]
 COPY package.json .
 
 RUN npm install && npm install pm2 -g 
@@ -22,4 +20,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["npm", "start", "pm2-runtime", "app.js"]
